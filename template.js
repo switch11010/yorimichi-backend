@@ -8,11 +8,26 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-// const {
-//         TF_VERSION,
-//         TF_VNET_ADDRESS_SPACE,
-
-//     } = process.env;
+const testShops = [
+    {
+        "coodinate":{
+            "X":"100",
+            "Y":"100"
+        },
+        "image":"path/path",
+        "info":"Agri metal test",
+        "shop":"Agri metal"
+    },
+    {
+        "coodinate":{
+            "X":"100",
+            "Y":"100"
+        },
+        "image":"path/path",
+        "info":"Agri metal test",
+        "shop":"Agri metal"
+    }
+]
 
 const testTemplate = (req, res) => {
     res.send("hello, world\n");
@@ -21,34 +36,21 @@ const testTemplate = (req, res) => {
 const setDest = (req, res) => {
     
     //ここにDB処理
-    
-    const testShops = [
-        {
-            "coodinate":{
-                "X":"100",
-                "Y":"100"
-            },
-            "image":"path/path",
-            "info":"Agri metal test",
-            "shop":"Agri metal"
-        },
-        {
-            "coodinate":{
-                "X":"100",
-                "Y":"100"
-            },
-            "image":"path/path",
-            "info":"Agri metal test",
-            "shop":"Agri metal"
-        }
-    ]
 
     const shops = JSON.stringify(testShops);
     res.json(shops);
 }
 
+const setYrmc = (req, res) => {
+    
+    //ここにDB処理
+
+    res.send("true");
+}
+
 
 module.exports = {
     testTemplate,
-    setDest
+    setDest,
+    setYrmc
 }
