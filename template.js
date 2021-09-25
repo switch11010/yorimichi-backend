@@ -18,7 +18,7 @@ const docRef_yrmcs = db.collection('yrmcs')
 
 dotenv.config();
 
-const thDistance = 500
+const thDistance = 1000
 
 const shuffle = ([...array]) => {
     for (let i = array.length - 1; i >= 0; i--) {
@@ -43,17 +43,18 @@ const getShops = async (req, res) => {
 const setDest = async (req, res) => {
     const dest = {
         currentLoc: req.body.currentLoc,  // {X: 100, Y:100}
-        destination: req.body.destination, // {X: 10, Y:10}
+        destinationLoc: req.body.destinationLoc, // {X: 10, Y:10}
         // timestamp: admin.firestore.FieldValue.serverTimestamp(), // このように書くとtimestampも保存できる
     };
     // await docRef_dests.add(dest)
 
     // calc 
-    const i0 = dest.currentLoc.X;
-    const k0 = dest.currentLoc.Y;
-    const i1 = dest.destination.X;
-    const k1 = dest.destination.Y;
+    const i0 = dest.currentLoc.ido;
+    const k0 = dest.currentLoc.keido;
+    const i1 = dest.destinationLoc.ido;
+    const k1 = dest.destinationLoc.keido;
     const xy = calcIdoKeido(i0, k0, i1, k1, thDistance);
+    console.log(xy);
     const x1 = Math.min(xy[0], xy[2]);
     const y1 = Math.min(xy[1], xy[3]);
     const x2 = Math.max(xy[0], xy[2]);
@@ -63,8 +64,8 @@ const setDest = async (req, res) => {
     // const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).where('coordinate.X', '<=', x2).where('coordinate.Y', '>=', y1).where('coordinate.Y', '<=', y2).get();
     var shops = snapshots.docs.map(doc => doc.data());
     shops = shops.map(shop => {
-        const x = shop.coordinate.X;
-        const y = shop.coordinate.Y;
+        const x = shop.coordinate.ido;
+        const y = shop.coordinate.keido;
         if ((x <= x2) && (y >= y1) && (y <= y2)) {
             return shop;
         }
@@ -74,7 +75,7 @@ const setDest = async (req, res) => {
     res.send(randomShops)
 }
 
-const setYrmc = (req, res) => {
+const setYrmc = async (req, res) => {
     const yrmc = {
         yrmcList: req.body.yrmcList,
         user_id: '',

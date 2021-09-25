@@ -93,18 +93,18 @@ const geoDirection = (lat1, lng1, lat2, lng2) => {
  
 const calcIdoKeido = (i0, k0, i1, k1, d) => {
   const direction = geoDirection(i0, k0, i1, k1);
-  const a0 = direction - 90;
+  var a0 = direction - 90;
   if (a0 < 0) {
     a0 += 360;
   }
-  const a1 = direction + 90;
+  var a1 = direction + 90;
   if (a1 >= 360) {
     a1 -= 360;
   }
   const x1 = ido(i0, k0, d, a0);
   const y1 = keido(i0, k0, d, a0);
-  const x2 = ido(i0, k0, d, a1);
-  const y2 = keido(i0, k0, d, a1);
+  const x2 = ido(i1, k1, d, a1);
+  const y2 = keido(i1, k1, d, a1);
   return [x1, y1, x2, y2];
 }
 
