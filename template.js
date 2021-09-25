@@ -12,7 +12,7 @@ admin.initializeApp({ credential: admin.credential.cert(ServiceAccount) });
 // Firestoreの参照を取得
 const db = admin.firestore();
 const docRef_users = db.collection('users')
-const docRef_shops = db.collection('shops')
+const docRef_yorimichis = db.collection('yorimichis')
 const docRef_yrmcs = db.collection('yrmcs')
 // const docRef_dests = db.collection('dests')
 
@@ -28,23 +28,22 @@ const shuffle = ([...array]) => {
     return array;
 }
 
-const testTemplate = (req, res) => {
-    res.send("hello, world\n");
-}
+// const testTemplate = (req, res) => {
+//     res.send("hello, world\n");
+// }
 
-const getShops = async (req, res) => {
-    // shopsコレクションのデータを全量取得
-    const snapshots = await docRef_shops.get();
-    // レスポンスからデータ部分のみ取り出す
-    const shops = snapshots.docs.map(doc => doc.data());
-    res.send(shops);
-}
+// const getShops = async (req, res) => {
+//     // shopsコレクションのデータを全量取得
+//     const snapshots = await docRef_shops.get();
+//     // レスポンスからデータ部分のみ取り出す
+//     const shops = snapshots.docs.map(doc => doc.data());
+//     res.send(shops);
+// }
 
 const setDest = async (req, res) => {
     const dest = {
-        currentLoc: req.body.currentLoc,  // {X: 100, Y:100}
-        destinationLoc: req.body.destinationLoc, // {X: 10, Y:10}
-        // timestamp: admin.firestore.FieldValue.serverTimestamp(), // このように書くとtimestampも保存できる
+        currentLoc: req.body.currentLoc,  
+        destinationLoc: req.body.destinationLoc, 
     };
     // await docRef_dests.add(dest)
 
@@ -60,19 +59,19 @@ const setDest = async (req, res) => {
     const x2 = Math.max(xy[0], xy[2]);
     const y2 = Math.max(xy[1], xy[3]);
 
-    const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).get();
+    const snapshots = await docRef_yorimichis.where('coordinate.ido', '>=', x1).get();
     // const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).where('coordinate.X', '<=', x2).where('coordinate.Y', '>=', y1).where('coordinate.Y', '<=', y2).get();
-    var shops = snapshots.docs.map(doc => doc.data());
-    shops = shops.map(shop => {
-        const x = shop.coordinate.ido;
-        const y = shop.coordinate.keido;
+    var yorimichis = snapshots.docs.map(doc => doc.data());
+    yorimichis = yorimichis.map(yorimichi => {
+        const x = yorimichi.coordinate.ido;
+        const y = yorimichi.coordinate.keido;
         if ((x <= x2) && (y >= y1) && (y <= y2)) {
-            return shop;
+            return yorimichi;
         }
     })
-    const shuffleShops = shuffle(shops);
-    const randomShops = shuffleShops.slice(0,10);
-    res.send(randomShops)
+    const shuffleYorimichis = shuffle(yorimichis);
+    const randomYorimichis = shuffleYorimichis.slice(0,10);
+    res.send(randomYorimichis)
 }
 
 const setYrmc = async (req, res) => {
@@ -85,8 +84,8 @@ const setYrmc = async (req, res) => {
 }
 
 module.exports = {
-    testTemplate,
+    // testTemplate,
     setDest,
     setYrmc,
-    getShops,
+    // getShops,
 }

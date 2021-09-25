@@ -1,11 +1,12 @@
 const express = require('express');
-const {testTemplate, setDest, setYrmc, getShops} = require('../template');
+// const {testTemplate, setDest, setYrmc, getShops} = require('../template');
+const {setDest, setYrmc} = require('../template');
 
 const router = express.Router();
 
 // example code
-router.get('/test', testTemplate);
-router.get('/shops', getShops);
+// router.get('/test', testTemplate);
+// router.get('/shops', getShops);
 
 router.post('/setDest', setDest);
 router.post('/setYrmc', setYrmc);
