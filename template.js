@@ -1,10 +1,13 @@
 'use strict'
 const dotenv = require('dotenv');
 
+const ServiceAccount = require('./ServiceAccount.json');
 
-//const firebase = require('./firebase');
-//const firestore = firebase.firestore();
-
+// Firebaseのinitialize
+admin.initializeApp({ credential: admin.credential.cert(ServiceAccount) });
+// Firestoreの参照を取得
+const db = admin.firestore();
+const docRef = db.collection('shops');
 
 dotenv.config();
 
@@ -33,6 +36,11 @@ const testTemplate = (req, res) => {
     res.send("hello, world\n");
 }
 
+const testStarge = (req, res) => {
+    
+    res.send("true");
+}
+
 const setDest = (req, res) => {
     
     //ここにDB処理
@@ -48,9 +56,9 @@ const setYrmc = (req, res) => {
     res.send("true");
 }
 
-
 module.exports = {
     testTemplate,
+    testStarge,
     setDest,
     setYrmc
 }
