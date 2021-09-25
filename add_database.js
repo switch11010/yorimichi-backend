@@ -1,5 +1,5 @@
 const admin = require('firebase-admin');
-const functions = require('firebase-functions');
+// const functions = require('firebase-functions');
 const ServiceAccount = require('./ServiceAccount.json');
 
 admin.initializeApp({ credential: admin.credential.cert(ServiceAccount) });
@@ -8,11 +8,12 @@ const db = admin.firestore();
 
 const yorimichiCoordList = [
   {
-    name: 'セブン-イレブン 西新宿新和ビル店',
+    name: 'Bar 1',
     coordinate: {ido: 35.687367, keido: 139.6940006},
-    imagePath: './sample.jpeg',
+    imagePath: 'gs://tinder-clone-mern-91837.appspot.com/bar.jpg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'タヒチアンノニカフェ東京',
@@ -20,6 +21,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'すし屋銀蔵 新宿ＮＳビル店',
@@ -27,6 +29,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: '東京都庁第二本庁舎職員食堂',
@@ -34,6 +37,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'インド パキスタン料理 Khana',
@@ -41,6 +45,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'じゃぽん 新宿ワシントンホテル店',
@@ -48,6 +53,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'Capricciosa',
@@ -55,6 +61,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: "TULLY'S COFFEE",
@@ -62,6 +69,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: '釣船茶屋 ざうお 新宿店',
@@ -69,6 +77,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'La vie en rose',
@@ -76,6 +85,7 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 00000,
   },
   {
     name: 'すし 岩瀬',
@@ -83,12 +93,167 @@ const yorimichiCoordList = [
     imagePath: './sample.jpeg',
     info: 'something to discribe a yorimichi',
     category: '',
+    usecase: 11111,
+  },
+  {
+    name: '立花ビル',
+    coordinate: {ido: 35.6873378, keido: 139.693179},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: 'FamilyMart 新宿ワシントンホテル店',
+    coordinate: {ido: 35.6873378, keido: 139.693179},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: '三越伊勢丹西新宿ビル',
+    coordinate: {ido: 35.6873378, keido: 139.693179},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: 'マック・メディカルアカデミー',
+    coordinate: {ido: 35.6873438, keido: 139.6932216},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: '(株)ライフプラザパートナーズ',
+    coordinate: {ido: 35.6882655, keido: 139.6929686},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: 'KDDIビル',
+    coordinate: {ido: 35.687983, keido: 139.6939593},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: '資格の学校TAC',
+    coordinate: {ido: 35.6875493, keido: 139.6954981},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: 'Family Mart 新宿新都心店',
+    coordinate: {ido: 35.6871812, keido: 139.6941245},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: 'Vie de France',
+    coordinate: {ido: 35.6868245, keido: 139.695189},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 11111,
+  },
+  {
+    name: 'じゃぽん 新宿ワシントンホテル店',
+    coordinate: {ido: 35.6871971, keido: 139.6929855},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: 'Capricciosa',
+    coordinate: {ido: 35.6871971, keido: 139.6929855},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: "TULLY'S COFFEE",
+    coordinate: {ido: 35.6880164, keido: 139.6930081},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: '釣船茶屋 ざうお 新宿店',
+    coordinate: {ido: 35.6869183, keido: 139.6929063},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: 'La vie en rose',
+    coordinate: {ido: 35.6868189, keido: 139.6927562},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: 'すし 岩瀬',
+    coordinate: {ido: 35.686549, keido: 139.692722},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: '立花ビル',
+    coordinate: {ido: 35.6873378, keido: 139.693179},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: 'FamilyMart 新宿ワシントンホテル店',
+    coordinate: {ido: 35.6873378, keido: 139.693179},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: '三越伊勢丹西新宿ビル',
+    coordinate: {ido: 35.6873378, keido: 139.693179},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
+  },
+  {
+    name: 'マック・メディカルアカデミー',
+    coordinate: {ido: 35.6873438, keido: 139.6932216},
+    imagePath: './sample.jpeg',
+    info: 'something to discribe a yorimichi',
+    category: '',
+    usecase: 22222,
   },
   // {
   //   name: '',
   //   coordinate: {ido: , keido: },
   //   imagePath: './sample.jpeg',
   //   info: 'something to discribe a yorimichi',
+  //   category: '',
+  //   usecase: 0,
   // },
 ]
 

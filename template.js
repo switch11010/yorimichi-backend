@@ -72,6 +72,7 @@ const setDest = async (req, res) => {
     const shuffleYorimichis = shuffle(yorimichis);
     const randomYorimichis = shuffleYorimichis.slice(0,10);
     res.send(randomYorimichis)
+    console.log(yorimichis.length);
 }
 
 const setYrmc = async (req, res) => {
