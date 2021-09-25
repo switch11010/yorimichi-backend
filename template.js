@@ -58,6 +58,7 @@ const setDest = async (req, res) => {
     const y1 = Math.min(xy[1], xy[3]);
     const x2 = Math.max(xy[0], xy[2]);
     const y2 = Math.max(xy[1], xy[3]);
+    console.log(xy);
 
     const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).get();
     // const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).where('coordinate.X', '<=', x2).where('coordinate.Y', '>=', y1).where('coordinate.Y', '<=', y2).get();
@@ -69,12 +70,13 @@ const setDest = async (req, res) => {
             return shop;
         }
     })
+    console.log(shops);
     const shuffleShops = shuffle(shops);
     const randomShops = shuffleShops.slice(0,10);
-    res.send(randomShops)
+    res.send(randomShops);
 }
 
-const setYrmc = (req, res) => {
+const setYrmc = async (req, res) => {
     const yrmc = {
         yrmcList: req.body.yrmcList,
         user_id: '',

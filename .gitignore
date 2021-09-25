@@ -2,3 +2,5 @@
 node_modules
 ServiceAccount.json
 api.txt
+.firebase
+functions
