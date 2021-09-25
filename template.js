@@ -14,10 +14,41 @@ dotenv.config();
 
 //     } = process.env;
 
-const testTemplate = (req, res) =>{
+const testTemplate = (req, res) => {
     res.send("hello, world\n");
 }
 
+const setDest = (req, res) => {
+    
+    //ここにDB処理
+    
+    const testShops = [
+        {
+            "coodinate":{
+                "X":"100",
+                "Y":"100"
+            },
+            "image":"path/path",
+            "info":"Agri metal test",
+            "shop":"Agri metal"
+        },
+        {
+            "coodinate":{
+                "X":"100",
+                "Y":"100"
+            },
+            "image":"path/path",
+            "info":"Agri metal test",
+            "shop":"Agri metal"
+        }
+    ]
+
+    const shops = JSON.stringify(testShops);
+    res.json(shops);
+}
+
+
 module.exports = {
-    testTemplate
+    testTemplate,
+    setDest
 }
