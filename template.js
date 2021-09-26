@@ -18,7 +18,7 @@ const docRef_yrmcs = db.collection('yrmcs')
 
 dotenv.config();
 
-const thDistance = 1000
+const thDistance = 500
 
 const shuffle = ([...array]) => {
     for (let i = array.length - 1; i >= 0; i--) {
@@ -43,7 +43,9 @@ const shuffle = ([...array]) => {
 const setDest = async (req, res) => {
     const dest = {
         currentLoc: req.body.currentLoc,  
-        destinationLoc: req.body.destinationLoc, 
+        destinationLoc: req.body.destinationLoc,
+        // 修正
+        userId: req.body.userId,
     };
     // await docRef_dests.add(dest)
 
@@ -59,13 +61,13 @@ const setDest = async (req, res) => {
     const x2 = Math.max(xy[0], xy[2]);
     const y2 = Math.max(xy[1], xy[3]);
 
-    const snapshots = await docRef_yorimichis.where('coordinate.ido', '>=', x1).get();
+    const snapshots = await docRef_yorimichis.where('usecase', '==', dest.userId).get();
     // const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).where('coordinate.X', '<=', x2).where('coordinate.Y', '>=', y1).where('coordinate.Y', '<=', y2).get();
     var yorimichis = snapshots.docs.map(doc => doc.data());
     yorimichis = yorimichis.map(yorimichi => {
         const x = yorimichi.coordinate.ido;
         const y = yorimichi.coordinate.keido;
-        if ((x <= x2) && (y >= y1) && (y <= y2)) {
+        if ((x >= x1) && (x <= x2) && (y >= y1) && (y <= y2)) {
             return yorimichi;
         }
     })
@@ -78,9 +80,9 @@ const setDest = async (req, res) => {
 const setYrmc = async (req, res) => {
     const yrmc = {
         yrmcList: req.body.yrmcList,
-        user_id: '',
+        userId: '',
     }
-    await docRef_yrmcs.add(yrmc);
+    // await docRef_yrmcs.add(yrmc);
     res.send("success!!!")
 }
 
