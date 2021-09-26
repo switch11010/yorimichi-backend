@@ -61,7 +61,9 @@ const setDest = async (req, res) => {
     const x2 = Math.max(xy[0], xy[2]);
     const y2 = Math.max(xy[1], xy[3]);
 
-    const snapshots = await docRef_yorimichis.where('usecase', '==', dest.userId).get();
+    const uId = '2Oyp8kXmJtZ5w0t17g2rc5f49ut1';
+
+    const snapshots = await docRef_yorimichis.where('uId', '==', uId).get();
     // const snapshots = await docRef_shops.where('coordinate.X', '>=', x1).where('coordinate.X', '<=', x2).where('coordinate.Y', '>=', y1).where('coordinate.Y', '<=', y2).get();
     var yorimichis = snapshots.docs.map(doc => doc.data());
     yorimichis = yorimichis.map(yorimichi => {
